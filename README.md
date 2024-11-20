@@ -33,4 +33,40 @@ A modern e-commerce platform to browse, buy, and manage makeup products.
 
 ## Live Link
 
+## Locally Run
+
+1. **Clone the Repository**
+
+   ```bash
+
+   git clone https://github.com/samiha-akter/glamour-lush-client
+
+   ```
+
+2. **Install Dependencies**
+
+```bash
+
+npm install
+
+```
+
+3. **Run**
+
+```bash
+
+npm run dev
+
+```
+
+---
+
+## Credentials
+
+- Buyer Account: [email: john@gmail.com, password: John@1234]
+- Seller Account [email: sophie@gmail.com, password: Sophie@123]
+- Admin Account [email: admin@gmail.com, password: Admin@123]
+
+---
+
 Explore the world of makeups and skincare and elevate your beauty journey with Glamour Lush!

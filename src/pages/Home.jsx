@@ -12,7 +12,7 @@ export default function Home() {
     <div>
       <Banner />
       <div className="container mx-auto">
-      <div className="my-24">
+        <div className="my-24">
           <Heading text={"Product Categories"} />
           <Carousel />
         </div>

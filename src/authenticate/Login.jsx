@@ -18,17 +18,14 @@ export default function Login() {
     navigate("/");
   };
   return (
-    <div className="hero bg-base-300 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login Now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
-        </div>
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div class=" flex items-center my-5 justify-center w-full">
+      <div class="bg-white lg:shadow-xl rounded-lg px-8 py-6 lg:w-2/5">
+        <h1 class="text-2xl font-bold text-center mb-4 ">
+          Welcome to{" "}
+          <span className="italic">
+            Glamour <span className="text-purple-400">Lush</span>
+          </span>
+        </h1>
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
@@ -47,26 +44,41 @@ export default function Login() {
               )}
             </div>
             <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                placeholder="password"
-                className="input input-bordered"
-                {...register("password", { required: true, minLength: 6 })}
-              />
-              {errors.password?.type === "required" && (
-                <p className="text-red-500 text-sm font-light">
-                  Password is required!
-                </p>
-              )}
-              {errors.password?.type === "minLength" && (
-                <p className="text-red-500 text-sm font-light">
-                  Password must have atleast 6 characters!
-                </p>
-              )}
-            </div>
+            <label className="label">
+              <span className="label-text font-semibold">Password</span>
+            </label>
+            <input
+              type="password"
+              placeholder="password"
+              className="input input-bordered"
+              {...register("password", {
+                required: "Password is required!",
+                minLength: {
+                  value: 8,
+                  message: "Password must be at least 8 characters!",
+                },
+                validate: {
+                  hasUpperCase: (value) =>
+                    /[A-Z]/.test(value) ||
+                    "Password must include at least one uppercase letter!",
+                  hasLowerCase: (value) =>
+                    /[a-z]/.test(value) ||
+                    "Password must include at least one lowercase letter!",
+                  hasNumber: (value) =>
+                    /\d/.test(value) ||
+                    "Password must include at least one number!",
+                  hasSpecialChar: (value) =>
+                    /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
+                    "Password must include at least one special character!",
+                },
+              })}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-sm font-light">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
 
             <div className="form-control mt-6">
               <button type="submit" className="btn bg-purple-400 text-white">
@@ -83,6 +95,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-    </div>
+    
   );
 }
