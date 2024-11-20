@@ -1,0 +1,30 @@
+{
+    "categories": [
+      {
+        "id": 1,
+        "title": "Foundation"
+      },
+      {
+        "id": 2,
+        "title": "Lip Gloss"
+      },
+      {
+        "id": 3,
+        "title": "Body Wash"
+      },
+      {
+        "id": 4,
+        "title": "Bath Bomb"
+      },
+      {
+        "id": 5,
+        "title": "Mascara"
+      },
+      {
+        "id": 6,
+        "title": "Setting Powder"
+      }
+      
+    ]
+  }
+  

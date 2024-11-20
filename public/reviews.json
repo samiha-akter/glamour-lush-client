@@ -1,0 +1,34 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Sana A.",
+      "review": "Glamour Lush has transformed my beauty routine. The range of cruelty-free products is amazing!"
+    },
+    {
+      "id": 2,
+      "name": "Mariam K.",
+      "review": "I love how easy it is to find the perfect shade for my skin tone. Great user experience!💄✨"
+    },
+    {
+      "id": 3,
+      "name": "Sara P.",
+      "review": "As a seller, managing my inventory is so seamless. Glamour Lush makes my job easier!"
+    },
+    {
+      "id": 4,
+      "name": "Ayesha N.",
+      "review": "The contact support is incredible!💄✨ They helped me find the perfect foundation for my wedding."
+    },
+    {
+      "id": 5,
+      "name": "Fatima T.",
+      "review": "Glamour Lush is my go-to site for all my makeup needs. Highly recommend!"
+    },
+    {
+        "id":6,
+        "name": "Sophie J. Wang",
+        "review": "Highly recommend! I love how easy it is to find the perfect shade for my skin tone."
+    }
+  ]
+}
