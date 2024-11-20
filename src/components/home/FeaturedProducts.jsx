@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../ProductCard";
 import Loading from "../../pages/Loading";
 import axios from "axios";
+import FeaturedProductCard from "./FeaturedProductCard";
 const FeaturedProducts = () => {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
@@ -9,7 +9,7 @@ const FeaturedProducts = () => {
     setLoading(true);
     const fetch = async () => {
       axios
-        .get(`${import.meta.env.VITE_BASE_URL}/all-products?limit=${6}`)
+        .get(`${import.meta.env.VITE_BASE_URL}/all-products?limit=${3}`)
         .then((res) => {
           setProducts(res.data.products);
           setLoading(false);
@@ -30,7 +30,7 @@ const FeaturedProducts = () => {
           ) : (
             <div className="min-h-screen grid grid-cols-3 gap-5 pb-5">
               {products.map((product) => (
-                <ProductCard key={product._id} product={product} />
+                <FeaturedProductCard key={product._id} product={product} />
               ))}
             </div>
           )}

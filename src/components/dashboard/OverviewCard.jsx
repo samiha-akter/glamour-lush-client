@@ -4,7 +4,7 @@ import useUserData from "../../hooks/useUserData";
 export default function OverviewCard() {
   const userData = useUserData();
   return (
-    <div className="stats stats-vertical lg:stats-horizontal shadow">
+    <div className="stats stats-vertical lg:stats-horizontal shadow-xl border-2 border-r-4 border-purple-400 border-b-0">
       <div className="stat">
         <div className="stat-title">Email</div>
         <div className="stat-value">{userData.email}</div>

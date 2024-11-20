@@ -8,8 +8,9 @@ export default function Dashboard() {
       <div>
         <DashNavbar />
       </div>
-      <div className="min-h-screen bg-purple-100">
+      <div className="min-h-screen ">
         <Outlet />
+        
       </div>
     </div>
   );

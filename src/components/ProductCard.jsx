@@ -2,7 +2,7 @@ import axios from "axios";
 import useUserData from "../hooks/useUserData";
 import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
-const ProductCard = ({ product, isInWishlist, setLatestData }) => {
+const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
   const userData = useUserData();
   const userEmail = userData.email;
   const token = localStorage.getItem("access-token");
@@ -64,6 +64,63 @@ const ProductCard = ({ product, isInWishlist, setLatestData }) => {
       });
   };
 
+  const handleCart = async () => {
+    await axios
+      .patch(
+        `${import.meta.env.VITE_BASE_URL}/cart/add`,
+        {
+          userEmail: userEmail,
+          productId: product._id,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product added to Your Cart",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
+  const handleRemoveCart = async () => {
+    await axios
+      .patch(
+        `${import.meta.env.VITE_BASE_URL}/cart/remove`,
+        {
+          userEmail: userEmail,
+          productId: product._id,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Product removed from Your Cart",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setLatestData((prev) => !prev);
+        }
+      });
+  };
+
   return (
     <div className="card shadow-xl">
       <figure>
@@ -96,7 +153,7 @@ const ProductCard = ({ product, isInWishlist, setLatestData }) => {
           View Details
         </NavLink>
         {userData.role === "buyer" && (
-          <div className="card-actions justify-end">
+          <>
             {isInWishlist ? (
               <button
                 className="btn bg-red-600 text-white"
@@ -110,6 +167,25 @@ const ProductCard = ({ product, isInWishlist, setLatestData }) => {
                 onClick={handleWishlist}
               >
                 Add To Wishlist
+              </button>
+            )}
+          </>
+        )}
+        {userData.role === "buyer" && (
+          <div className="card-actions justify-end">
+            {isInCart ? (
+              <button
+                className="btn bg-red-600 text-white"
+                onClick={handleRemoveCart}
+              >
+                Remove from Cart
+              </button>
+            ) : (
+              <button
+                className="btn bg-purple-400 text-white"
+                onClick={handleCart}
+              >
+                Add To Cart
               </button>
             )}
           </div>
