@@ -14,6 +14,7 @@ import AddProducts from "../pages/dashboard/seller/AddProducts";
 import SellerRoute from "./private/SellerRoute";
 import BuyerRoute from "./private/BuyerRoute";
 import MyWishlist from "../pages/dashboard/buyer/MyWishlist";
+import ProductDetails from "../components/product/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,15 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/products/:id",
+        element: (
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        ),
+       
       },
       {
         path: "/about",

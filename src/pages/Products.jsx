@@ -105,7 +105,7 @@ const Products = () => {
           )}
           {/* Pagination */}
           {products.length !== 0 && (
-            <div className="flex justify-center items-center gap-4 mt-8">
+            <div className="flex justify-center items-center gap-4 mt-8 mb-5">
               <button
                 className="rounded-full hover:bg-white text-purple-400 disabled:opacity-50"
                 onClick={() => handlePageChange(page - 1)}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import useUserData from "../hooks/useUserData";
 import Swal from "sweetalert2";
-
+import { NavLink } from "react-router-dom";
 const ProductCard = ({ product, isInWishlist, setLatestData }) => {
   const userData = useUserData();
   const userEmail = userData.email;
@@ -89,24 +89,31 @@ const ProductCard = ({ product, isInWishlist, setLatestData }) => {
         <h4 className="card-title text-lg text-purple-500 font-bold">
           ${product.price}
         </h4>
-
-        <div className="card-actions justify-end">
-          {isInWishlist ? (
-            <button
-              className="btn bg-red-600 text-white"
-              onClick={handleRemoveWishlist}
-            >
-              Remove from Wishlist
-            </button>
-          ) : (
-            <button
-              className="btn bg-purple-400 text-white"
-              onClick={handleWishlist}
-            >
-              Add To Wishlist
-            </button>
-          )}
-        </div>
+        <NavLink
+          to={`/products/${product._id}`}
+          className="btn bg-transparent hover:bg-purple-400 hover:text-white border-2 border-purple-400 text-black "
+        >
+          View Details
+        </NavLink>
+        {userData.role === "buyer" && (
+          <div className="card-actions justify-end">
+            {isInWishlist ? (
+              <button
+                className="btn bg-red-600 text-white"
+                onClick={handleRemoveWishlist}
+              >
+                Remove from Wishlist
+              </button>
+            ) : (
+              <button
+                className="btn bg-purple-400 text-white"
+                onClick={handleWishlist}
+              >
+                Add To Wishlist
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
