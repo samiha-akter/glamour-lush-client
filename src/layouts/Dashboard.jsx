@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/dashboard/Sidebar";
+import DashNavbar from "../components/dashboard/DashNavbar";
 
 export default function Dashboard() {
   return (
-    <div className="grid lg:grid-cols-12">
-      <div className="col-span-2">
-        <Sidebar />
+    <div>
+      <div>
+        <DashNavbar />
       </div>
-      <div className="col-span-10 p-12">
+      <div className="min-h-screen ">
         <Outlet />
       </div>
     </div>

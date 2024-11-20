@@ -102,7 +102,7 @@ const Products = () => {
           {/* Pagination */}
           <div className="flex justify-center items-center gap-2 my-8">
             <button
-              className="btn btn-ghost rounded-full hover:bg-white text-purple-400"
+              className=" rounded-full hover:bg-white text-purple-400"
               onClick={() => handlePageChange(page - 1)}
               disabled={page === 1}
             >
@@ -112,7 +112,7 @@ const Products = () => {
               Page {page} of {totalPages}
             </p>
             <button
-              className="btn btn-ghost rounded-full hover:bg-white text-purple-400"
+              className=" rounded-full hover:bg-white text-purple-400"
               onClick={() => handlePageChange(page + 1)}
               disabled={page === totalPages}
             >

@@ -3,7 +3,7 @@ const Loading = () => {
   return (
     <div className="min-h-screen min-w-screen flex justify-center items-center">
       <GridLoader
-        color="#B03052"
+        color="#8967B3"
         loading={true}
       />
     </div>

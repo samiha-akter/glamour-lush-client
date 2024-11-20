@@ -13,11 +13,25 @@ export default function UserDropdown() {
   const handleLogout = () => {
     Logout();
   };
+
+  useEffect(() => {
+    if (userData?.wishlist) {
+      setWishlistLength(userData.wishlist.length);
+    }
+  }, [userData?.wishlist]);
+  
   const dropItems = (
     <>
       <li>
         <NavLink to="/dashboard/overview">Dashboard</NavLink>
       </li>
+      {userData.role === "buyer" && (
+        <li>
+          <button className="btn bg-white text-black btn-sm border-2 border-purple-400">
+            Wishlist: {wishlistLength}
+          </button>
+        </li>
+      )}
       <li>
         <button
           className="btn bg-purple-400 text-white btn-sm btn-outline"
@@ -35,9 +49,6 @@ export default function UserDropdown() {
           <div className="avatar">
             <div className="w-10 rounded-full">
               <img src={`${user?.photoURL || "./user.png"}`} />
-            </div>
-            <div className="badge badge-secondary w-7 h-6">
-              {wishlistLength}
             </div>
           </div>
         </div>
