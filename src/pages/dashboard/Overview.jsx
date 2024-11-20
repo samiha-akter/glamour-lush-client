@@ -1,11 +1,10 @@
-import React from 'react'
-import useAuth from '../../hooks/useAuth'
+import React from "react";
+import OverviewCard from "../../components/dashboard/OverviewCard";
 
 export default function Overview() {
-  const { user } = useAuth();
   return (
-    <div className='flex items-center justify-center'>
-      <h3 className='text-xl text-center font-bold'>{user.email}</h3>
+    <div className="flex items-center justify-center py-11">
+      <OverviewCard />
     </div>
-  )
+  );
 }

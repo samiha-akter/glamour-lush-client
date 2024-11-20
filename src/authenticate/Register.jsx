@@ -21,7 +21,8 @@ export default function Register() {
     const role = data.role;
     const status = role === "buyer" ? "approved" : "pending";
     const wishlist = [];
-    const userData = { email, role, status, wishlist };
+    const cart = [];
+    const userData = { email, role, status, wishlist,cart };
 
     CreateUser(email, password)
       .then(() => {
