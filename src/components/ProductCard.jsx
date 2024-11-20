@@ -121,6 +121,72 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       });
   };
 
+  const handleRemoveProduct = async () => {
+    try {
+      const token = localStorage.getItem("access-token");
+      const res = await axios.delete(
+        `${import.meta.env.VITE_BASE_URL}/my-products/${product._id}`,
+        {
+          headers: { authorization: `Bearer ${token}` },
+        }
+      );
+  
+      if (res.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product removed successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLatestData((prev) => !prev); // Refresh data
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Failed to remove product",
+        text: error.response?.data?.message || "An error occurred",
+        showConfirmButton: true,
+      });
+      console.error("Error removing product:", error);
+    }
+  };
+  
+  const handleEditProduct = async (updatedData) => {
+    try {
+      const token = localStorage.getItem("access-token");
+      const res = await axios.patch(
+        `${import.meta.env.VITE_BASE_URL}/my-products/${product._id}`,
+        updatedData,
+        {
+          headers: { authorization: `Bearer ${token}` },
+        }
+      );
+  
+      if (res.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Product updated successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        setLatestData((prev) => !prev); // Refresh data
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Failed to update product",
+        text: error.response?.data?.message || "An error occurred",
+        showConfirmButton: true,
+      });
+      console.error("Error updating product:", error);
+    }
+  };
+  
+
   return (
     <div className="card shadow-xl">
       <figure>
@@ -188,6 +254,21 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
                 Add To Cart
               </button>
             )}
+          </div>
+        )}
+        {userData.role === "seller" && (
+          <>
+            <button
+              className="btn bg-red-600 text-white"
+              onClick={handleRemoveProduct}
+            >
+              Remove Product
+            </button>
+          </>
+        )}
+        {userData.role === "seller" && (
+          <div className="card-actions justify-end">
+            <button className="btn bg-purple-400 text-white">Edit Info</button>
           </div>
         )}
       </div>

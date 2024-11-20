@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
+import Heading from "../../../components/Heading";
 
 export default function AddProducts() {
   const {
@@ -57,7 +58,7 @@ export default function AddProducts() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center mb-12">Add Products</h1>
+      <Heading text={"Add New Product"}/>
       <div>
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <div className="lg:flex gap-8">
