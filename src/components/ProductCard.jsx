@@ -2,10 +2,13 @@ import axios from "axios";
 import useUserData from "../hooks/useUserData";
 import Swal from "sweetalert2";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
   const userData = useUserData();
   const userEmail = userData.email;
   const token = localStorage.getItem("access-token");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [updatedPrice, setUpdatedPrice] = useState("");
 
   const handleWishlist = async () => {
     await axios
@@ -130,7 +133,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
           headers: { authorization: `Bearer ${token}` },
         }
       );
-  
+
       if (res.status === 200) {
         Swal.fire({
           position: "center",
@@ -152,18 +155,17 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       console.error("Error removing product:", error);
     }
   };
-  
-  const handleEditProduct = async (updatedData) => {
+
+  const handleEditProduct = async () => {
     try {
-      const token = localStorage.getItem("access-token");
       const res = await axios.patch(
         `${import.meta.env.VITE_BASE_URL}/my-products/${product._id}`,
-        updatedData,
+        { price: updatedPrice },
         {
           headers: { authorization: `Bearer ${token}` },
         }
       );
-  
+
       if (res.status === 200) {
         Swal.fire({
           position: "center",
@@ -172,6 +174,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
           showConfirmButton: false,
           timer: 1500,
         });
+        setIsModalOpen(false); // Close the modal
         setLatestData((prev) => !prev); // Refresh data
       }
     } catch (error) {
@@ -182,10 +185,8 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
         text: error.response?.data?.message || "An error occurred",
         showConfirmButton: true,
       });
-      console.error("Error updating product:", error);
     }
   };
-  
 
   return (
     <div className="card shadow-xl">
@@ -268,9 +269,44 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
         )}
         {userData.role === "seller" && (
           <div className="card-actions justify-end">
-            <button className="btn bg-purple-400 text-white">Edit Info</button>
+            <button
+              className="btn bg-purple-400 text-white"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Edit Info
+            </button>
           </div>
         )}
+
+        {/* Modal */}
+        {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-96 relative">
+            <h3 className="text-lg font-bold mb-4">Update Product Price</h3>
+            <input
+              type="number"
+              className="input input-bordered w-full mb-4"
+              placeholder="Enter New Price"
+              value={updatedPrice}
+              onChange={(e) => setUpdatedPrice(e.target.value)}
+            />
+            <div className="flex justify-end">
+              <button
+                className="btn bg-red-600 text-white mr-2"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn bg-green-600 text-white"
+                onClick={handleEditProduct}
+              >
+                Update
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );
