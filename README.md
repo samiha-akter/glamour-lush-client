@@ -2,8 +2,6 @@
 
 A modern e-commerce platform to browse, buy, and manage makeup products.
 
----
-
 ## Features
 
 - **Role-Based Access**:
@@ -19,7 +17,6 @@ A modern e-commerce platform to browse, buy, and manage makeup products.
 - **Fully Responsive**:
   - Optimized for both mobile and desktop devices.
 
----
 
 ## Tech Stack
 
@@ -29,7 +26,6 @@ A modern e-commerce platform to browse, buy, and manage makeup products.
 - **Authentication**: Firebase and JWT.
 - **Deployment**: Vercel.
 
----
 
 ## [Live Link](https://glamour-lush-client.vercel.app/)
 
@@ -59,14 +55,11 @@ npm run dev
 http://localhost:5173
 ```
 
----
-
 ## Credentials
 
 - Buyer Account: [email: john@gmail.com, password: John@1234]
 - Seller Account [email: sophie@gmail.com, password: Sophie@123]
 - Admin Account [email: admin@gmail.com, password: Admin@123]
 
----
 
 Explore the world of makeups and skincare and elevate your beauty journey with Glamour Lush!

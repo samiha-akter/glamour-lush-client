@@ -1,13 +1,15 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import useUserData from "../../hooks/useUserData";
 
 const UserCard = ({ user, setLatestData }) => {
   const token = localStorage.getItem("access-token");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updatedRole, setUpdatedRole] = useState(user.role);
   const [updatedStatus, setUpdatedStatus] = useState(user.status);
-
+  const userData = useUserData();
+  const email = userData.email;
   // Function to remove user
   const handleRemoveUser = async () => {
     try {
@@ -89,7 +91,7 @@ const UserCard = ({ user, setLatestData }) => {
             </p>
           )}
           <div className="card-actions justify-end">
-            {user.email !== "admin@gmail.com" ? (
+            {user.email !== email ? (
               <>
                 <button
                   className="btn bg-purple-400 text-white"
