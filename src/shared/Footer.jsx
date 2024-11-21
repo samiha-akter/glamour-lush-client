@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="footer bg-purple-400 text-white p-10">
       <aside>
-        <img src="./vite.svg" alt="" className="w-11 h-11" />
+        <img src="/vite.svg" alt="" className="w-11 h-11" />
         <p>
           <span className="text-2xl font-semibold">Glamour Lush</span>
           <br />
