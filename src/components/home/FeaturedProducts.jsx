@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
   useEffect(() => {
     setLoading(true);
     const fetch = async () => {
-      axios
+      await axios
         .get(`${import.meta.env.VITE_BASE_URL}/all-products?limit=${3}`)
         .then((res) => {
           setProducts(res.data.products);
@@ -29,7 +29,7 @@ const FeaturedProducts = () => {
             </div>
           ) : (
             <div className="min-h-screen grid grid-cols-3 gap-5 pb-5">
-              {products.map((product) => (
+              {products?.map((product) => (
                 <FeaturedProductCard key={product._id} product={product} />
               ))}
             </div>

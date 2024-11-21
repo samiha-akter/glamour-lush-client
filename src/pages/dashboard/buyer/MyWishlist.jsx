@@ -49,7 +49,7 @@ export default function MyWishlist() {
               </div>
             ) : (
               <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-5 p-5">
-                {wishlist.map((product) => (
+                {wishlist?.map((product) => (
                   <ProductCard
                     key={product._id}
                     product={product}

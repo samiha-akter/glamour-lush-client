@@ -47,7 +47,7 @@ export default function MyCart() {
               </div>
             ) : (
               <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-5 p-5">
-                {cart.map((product) => (
+                {cart?.map((product) => (
                   <ProductCard key={product._id} product={product} isInCart setLatestData={setLatestData} />
                 ))}
               </div>

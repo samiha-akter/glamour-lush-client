@@ -23,7 +23,7 @@ export default function FilterBar({
             <option value="" selected disabled>
               Brand
             </option>
-            {uniqueBrand.map((brand) => (
+            {uniqueBrand?.map((brand) => (
               <option key={brand} value={brand}>
                 {brand}
               </option>
@@ -38,7 +38,7 @@ export default function FilterBar({
             <option value="" selected disabled>
               Category
             </option>
-            {uniqueCategory.map((category) => (
+            {uniqueCategory?.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>

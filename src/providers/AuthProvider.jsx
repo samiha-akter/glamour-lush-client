@@ -19,44 +19,81 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const CreateUser = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  // Create User
+  const CreateUser = async (email, password) => {
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      return result;
+    } catch (error) {
+      console.error("Error creating user:", error);
+      throw error;
+    }
   };
 
-  const Login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+  // Login
+  const Login = async (email, password) => {
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result;
+    } catch (error) {
+      console.error("Error during login:", error);
+      throw error;
+    }
   };
 
-  const GoogleLogin = () => {
-    return signInWithPopup(auth, googleProvider);
+  // Google Login
+  const GoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      return result;
+    } catch (error) {
+      console.error("Error during Google login:", error);
+      throw error;
+    }
   };
 
-  const Logout = () => {
-    return signOut(auth);
+  // Logout
+  const Logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error during logout:", error);
+      throw error;
+    }
   };
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      if (currentUser) {
-        axios
-          .post(`${import.meta.env.VITE_BASE_URL}/authentication`, {
-            email: currentUser.email,
-          })
-          .then((data) => {
-            if (data.data) {
-              localStorage.setItem("access-token", data?.data?.token);
-              setLoading(false);
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setLoading(true);
+      try {
+        setUser(currentUser);
+        if (currentUser) {
+          const response = await axios.post(
+            `${import.meta.env.VITE_BASE_URL}/authentication`,
+            {
+              email: currentUser.email,
             }
-          });
-      } else {
-        localStorage.removeItem("access-token");
+          );
+          if (response.data && response.data.token) {
+            localStorage.setItem("access-token", response.data.token);
+          } else {
+            console.warn("No token received from the server.");
+          }
+        } else {
+          localStorage.removeItem("access-token");
+        }
+      } catch (error) {
+        console.error("Error during authentication state change:", error);
+      } finally {
         setLoading(false);
       }
     });
-    return () => {
-      unSubscribe();
-    };
+
+    return () => unSubscribe();
   }, []);
 
   const authInfo = {
@@ -67,6 +104,7 @@ const AuthProvider = ({ children }) => {
     GoogleLogin,
     Logout,
   };
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

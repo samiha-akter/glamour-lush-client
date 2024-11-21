@@ -24,9 +24,9 @@ export default function Register() {
     const cart = [];
     const userData = { email, role, status, wishlist,cart };
 
-    CreateUser(email, password)
+     CreateUser(email, password)
       .then(() => {
-        return axios.post(`${import.meta.env.VITE_BASE_URL}/users`, userData);
+        return  axios.post(`${import.meta.env.VITE_BASE_URL}/users`, userData);
       })
       .then((res) => {
         if (res.data.insertedId) {

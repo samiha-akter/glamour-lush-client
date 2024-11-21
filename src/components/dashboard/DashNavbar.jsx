@@ -94,7 +94,7 @@ export default function DashNavbar() {
             </NavLink>
           </li>
           {userData.role === "seller" &&
-            sellerRoutes.map((route) => (
+            sellerRoutes?.map((route) => (
               <li key={route.id} className="p-2">
                 <NavLink to={route.route} className="flex items-center gap-2">
                   <>{route.icon}</>
@@ -103,7 +103,7 @@ export default function DashNavbar() {
               </li>
             ))}
           {userData.role === "buyer" &&
-            buyerRoutes.map((route) => (
+            buyerRoutes?.map((route) => (
               <li key={route.id} className="p-2">
                 <NavLink to={route.route} className="flex items-center gap-2">
                   <>{route.icon}</>
@@ -112,7 +112,7 @@ export default function DashNavbar() {
               </li>
             ))}
           {userData.role === "admin" &&
-            adminRoutes.map((route) => (
+            adminRoutes?.map((route) => (
               <li key={route.id} className="p-2">
                 <NavLink to={route.route} className="flex items-center gap-2">
                   <>{route.icon}</>

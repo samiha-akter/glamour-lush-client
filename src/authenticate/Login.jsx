@@ -13,8 +13,8 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    Login(data.email, data.password);
+  const onSubmit = async(data) => {
+    await Login(data.email, data.password);
     navigate("/");
   };
   return (

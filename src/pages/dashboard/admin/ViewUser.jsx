@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserCard from "../../../components/user/UserCard";
 import Loading from "../../Loading";
 import Heading from "../../../components/Heading";
-import axios from "axios"
+import axios from "axios";
 export default function ViewUser() {
   const token = localStorage.getItem("access-token");
   const [users, setUsers] = useState([]);
@@ -13,11 +13,14 @@ export default function ViewUser() {
       const res = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/all-users`,
         {
-          headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
         }
       );
       setUsers(res.data);
-    //   console.log(res.data)
+      // console.log(res.data)
       setLoading(false);
     } catch (error) {
       console.error("Error fetching Users:", error);
@@ -29,7 +32,7 @@ export default function ViewUser() {
 
   return (
     <div>
-      <Heading text={"My Products"} />
+      <Heading text={"All Users"} />
       <div>
         {loading ? (
           <Loading />
@@ -43,7 +46,7 @@ export default function ViewUser() {
               </div>
             ) : (
               <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-5 p-5">
-                {users.map((user) => (
+                {users?.map((user) => (
                   <UserCard
                     key={user._id}
                     user={user}

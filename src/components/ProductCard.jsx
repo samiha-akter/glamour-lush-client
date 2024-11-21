@@ -10,7 +10,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updatedPrice, setUpdatedPrice] = useState("");
 
-  const handleWishlist = async () => {
+  const handleWishlist = async() => {
     await axios
       .patch(
         `${import.meta.env.VITE_BASE_URL}/wishlist/add`,
@@ -160,7 +160,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
     try {
       const res = await axios.patch(
         `${import.meta.env.VITE_BASE_URL}/my-products/${product._id}`,
-        { price: updatedPrice },
+        { price: Number(updatedPrice) },
         {
           headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }

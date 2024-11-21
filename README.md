@@ -31,32 +31,32 @@ A modern e-commerce platform to browse, buy, and manage makeup products.
 
 ---
 
-## Live Link
+## [Live Link](https://glamour-lush-client.vercel.app/)
 
 ## Locally Run
 
 1. **Clone the Repository**
 
-   ```bash
-
-   git clone https://github.com/samiha-akter/glamour-lush-client
-
-   ```
+```bash
+git clone https://github.com/samiha-akter/glamour-lush-client
+ ```
 
 2. **Install Dependencies**
 
 ```bash
-
 npm install
-
 ```
 
 3. **Run**
 
 ```bash
-
 npm run dev
+```
 
+4. **Open your browser and navigate to**
+
+```bash
+http://localhost:5173
 ```
 
 ---

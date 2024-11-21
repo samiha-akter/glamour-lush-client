@@ -20,7 +20,7 @@ export default function Carousel() {
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 items-center justify-center">
-      {categories.map((category) => (
+      {categories?.map((category) => (
         <CategoriesCard key={category.id} title={category.title} />
       ))}
     </div>
