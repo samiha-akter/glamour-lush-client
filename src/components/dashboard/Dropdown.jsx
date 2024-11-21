@@ -1,7 +1,7 @@
 import useAuth from "../../hooks/useAuth";
 
 export default function Dropdown() {
-  const { user, Logout } = useAuth(); 
+  const {  Logout } = useAuth(); 
 
   const handleLogout = () => {
     Logout();
@@ -27,7 +27,7 @@ export default function Dropdown() {
         <div tabIndex={0} role="button" className="flex items-center">
           <div className="avatar">
             <div className="w-10 rounded-full">
-              <img src={`${user?.photoURL || "./user.png"}`} />
+              <img src={"./user.png"} />
             </div>
           </div>
         </div>
