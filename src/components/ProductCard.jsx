@@ -257,7 +257,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
             )}
           </div>
         )}
-        {userData.role === "seller" && (
+        {userData.role === "seller" && product.sellerEmail === userData.email && (
           <>
             <button
               className="btn bg-red-600 text-white"
@@ -267,7 +267,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
             </button>
           </>
         )}
-        {userData.role === "seller" && (
+        {userData.role === "seller" && product.sellerEmail === userData.email && (
           <div className="card-actions justify-end">
             <button
               className="btn bg-purple-400 text-white"
