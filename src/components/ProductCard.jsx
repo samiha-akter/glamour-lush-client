@@ -19,7 +19,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
           productId: product._id,
         },
         {
-          headers: {
+          headers: { 'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
           withCredentials: true,
@@ -47,7 +47,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
           productId: product._id,
         },
         {
-          headers: {
+          headers: { 'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
           withCredentials: true,
@@ -76,7 +76,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
           productId: product._id,
         },
         {
-          headers: {
+          headers: { 'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
           withCredentials: true,
@@ -104,7 +104,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
           productId: product._id,
         },
         {
-          headers: {
+          headers: { 'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
           withCredentials: true,
@@ -130,7 +130,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       const res = await axios.delete(
         `${import.meta.env.VITE_BASE_URL}/my-products/${product._id}`,
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: { 'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }
       );
 
@@ -162,7 +162,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
         `${import.meta.env.VITE_BASE_URL}/my-products/${product._id}`,
         { price: updatedPrice },
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }
       );
 

@@ -13,7 +13,7 @@ export default function ViewUser() {
       const res = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/all-users`,
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }
       );
       setUsers(res.data);

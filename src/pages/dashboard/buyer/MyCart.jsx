@@ -18,7 +18,7 @@ export default function MyCart() {
 
       await axios
         .get(`${import.meta.env.VITE_BASE_URL}/cart/${userData._id}`, {
-          headers: {
+          headers: { 'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
           withCredentials: true,

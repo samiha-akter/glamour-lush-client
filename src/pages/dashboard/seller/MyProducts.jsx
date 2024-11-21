@@ -17,11 +17,11 @@ const MyProducts = () => {
         `${import.meta.env.VITE_BASE_URL}/my-products`,
 
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }
       );
       setProducts(response.data);
-      console.log(products);
+      // console.log(products);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching products:", error);

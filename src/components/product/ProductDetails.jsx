@@ -12,13 +12,11 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/all-products?limit=${1000}`
+        const res = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/products?id=${id}`
         );
-          const products = response.data.products;
-          console.log(response.data)
-        const matchedProduct = products.filter((prod) => prod._id === id);
-        setProduct(matchedProduct[0]);
+        const product = res.data;
+        setProduct(product.product);
       } catch (err) {
         console.error(err);
       } finally {

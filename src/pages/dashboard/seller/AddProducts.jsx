@@ -37,7 +37,7 @@ export default function AddProducts() {
     const token = localStorage.getItem("access-token");
     axios
       .post(`${import.meta.env.VITE_BASE_URL}/add-products`, product, {
-        headers: {
+        headers: {  'Content-Type': 'application/json',
           authorization: `Bearer ${token}`,
         },
         withCredentials: true,

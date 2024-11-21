@@ -10,7 +10,7 @@ export default function Carousel() {
       try {
         const res = await axios.get("./categories.json");
         setCategories(res.data.categories);
-        console.log(res.data);
+        // console.log(res.data);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }

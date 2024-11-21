@@ -18,7 +18,7 @@ export default function MyWishlist() {
 
       await axios
         .get(`${import.meta.env.VITE_BASE_URL}/wishlist/${userData._id}`, {
-          headers: {
+          headers: { 'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
           },
           withCredentials: true,

@@ -14,7 +14,7 @@ const UserCard = ({ user, setLatestData }) => {
       const res = await axios.delete(
         `${import.meta.env.VITE_BASE_URL}/all-users/${user._id}`,
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }
       );
 
@@ -47,7 +47,7 @@ const UserCard = ({ user, setLatestData }) => {
         `${import.meta.env.VITE_BASE_URL}/all-users/${user._id}`,
         { role: updatedRole, status: updatedStatus },
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: {  'Content-Type': 'application/json', authorization: `Bearer ${token}` },
         }
       );
 
