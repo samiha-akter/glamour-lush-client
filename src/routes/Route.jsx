@@ -16,6 +16,8 @@ import BuyerRoute from "./private/BuyerRoute";
 import MyWishlist from "../pages/dashboard/buyer/MyWishlist";
 import ProductDetails from "../components/product/ProductDetails";
 import MyCart from "../pages/dashboard/buyer/MyCart";
+import AdminRoute from "./private/AdminRoute";
+import ViewUser from "../pages/dashboard/admin/ViewUser";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +39,6 @@ const router = createBrowserRouter([
             <ProductDetails />
           </PrivateRoute>
         ),
-       
       },
       {
         path: "/about",
@@ -69,14 +70,32 @@ const router = createBrowserRouter([
         path: "/dashboard/overview",
         element: <Overview />,
       },
+      // admin routes
+      {
+        path: "/dashboard/all-users",
+        element: (
+          <AdminRoute>
+            <ViewUser />
+          </AdminRoute>
+        ),
+      },
+
       // buyer routes
       {
-        path:"/dashboard/wishlist",
-        element:<BuyerRoute><MyWishlist/></BuyerRoute>,
+        path: "/dashboard/wishlist",
+        element: (
+          <BuyerRoute>
+            <MyWishlist />
+          </BuyerRoute>
+        ),
       },
       {
-        path:"/dashboard/cart",
-        element:<BuyerRoute><MyCart/></BuyerRoute>,
+        path: "/dashboard/cart",
+        element: (
+          <BuyerRoute>
+            <MyCart />
+          </BuyerRoute>
+        ),
       },
       // seller routes
       {

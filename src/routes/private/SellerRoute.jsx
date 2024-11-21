@@ -8,14 +8,13 @@ export default function SellerRoute({ children }) {
   const userData = useUserData();
   const location = useLocation();
 
-  if (loading || !userData.role) {
+  if (loading || !userData.role || !userData.status) {
     return <Loading />;
   }
 
-  if (user && userData.role ==="seller") {
+  if (user && userData.role === "seller" && userData.status === "approved") {
     return children;
   }
 
-  
-  return <Navigate to="/login" state={{from: location}} replace />;
+  return <Navigate to="/login" state={{ from: location }} replace />;
 }
