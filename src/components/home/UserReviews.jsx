@@ -19,7 +19,7 @@ export default function UserReviews() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-wrap">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-wrap p-3">
       {
         reviews?.map((review) => (
           <ReviewCard

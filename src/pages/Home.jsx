@@ -5,7 +5,8 @@ import UserReviews from "../components/home/UserReviews";
 import Accordion from "../components/home/Accordion";
 import Heading from "../components/Heading";
 import ContactHome from "../components/home/ContactHome";
-import Carousel from "../components/home/Carousel";
+import Categories from "../components/home/Categories";
+import Brands from "../components/home/Brands";
 
 export default function Home() {
   return (
@@ -14,7 +15,11 @@ export default function Home() {
       <div className="container mx-auto">
         <div className="my-24">
           <Heading text={"Product Categories"} />
-          <Carousel />
+          <Categories />
+        </div>
+        <div className="my-24">
+          <Heading text={"Brands"} />
+          <Brands />
         </div>
         <div className="my-24">
           <Heading text={"Featured Products"} />
