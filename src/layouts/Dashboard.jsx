@@ -11,9 +11,10 @@ export default function Dashboard() {
       </div>
       <div className="min-h-screen ">
         <Outlet />
-        
       </div>
-      <div><Footer/></div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

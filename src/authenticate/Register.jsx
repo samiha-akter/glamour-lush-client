@@ -22,11 +22,12 @@ export default function Register() {
     const status = role === "buyer" ? "approved" : "pending";
     const wishlist = [];
     const cart = [];
-    const userData = { email, role, status, wishlist,cart };
+    const userData = { email, role, status, wishlist, cart };
 
-     CreateUser(email, password)
+    // User Creation in Firebase and MongoDB
+    CreateUser(email, password)
       .then(() => {
-        return  axios.post(`${import.meta.env.VITE_BASE_URL}/users`, userData);
+        return axios.post(`${import.meta.env.VITE_BASE_URL}/users`, userData);
       })
       .then((res) => {
         if (res.data.insertedId) {
@@ -57,9 +58,10 @@ export default function Register() {
           Welcome to{" "}
           <span className="italic">
             Glamour <span className="text-purple-400">Lush</span>
-          </span> 
+          </span>
         </h1>
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+          {/* Email Field */}
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Email</span>
@@ -76,6 +78,7 @@ export default function Register() {
               </p>
             )}
           </div>
+          {/* Password Field */}
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Password</span>
@@ -112,6 +115,7 @@ export default function Register() {
               </p>
             )}
           </div>
+          {/* Confirm Password Field */}
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Confirm Password</span>
@@ -132,6 +136,7 @@ export default function Register() {
               </p>
             )}
           </div>
+          {/* Role Field */}
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Role</span>
@@ -149,14 +154,15 @@ export default function Register() {
               </p>
             )}
           </div>
+          {/* Buttons */}
           <div className="form-control mt-6">
             <button type="submit" className="btn bg-purple-400 text-white">
               Register
             </button>
           </div>
-
+          {/* Social Login */}
           <GoogleLogin />
-
+          {/* Navigation */}
           <p className="my-4 text-sm font-light">
             Already have an account?{" "}
             <Link to="/login" className="text-purple-500 underline">

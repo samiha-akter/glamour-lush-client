@@ -1,13 +1,11 @@
 import useAuth from "../../hooks/useAuth";
 
 export default function Dropdown() {
-  const {  Logout } = useAuth(); 
+  const { Logout } = useAuth();
 
   const handleLogout = () => {
     Logout();
   };
-
- 
 
   const dropItems = (
     <>

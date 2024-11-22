@@ -1,8 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="footer bg-purple-400 text-white p-10 w-full">
+    <footer className="footer bg-purple-400 text-white p-10 w-full min-w-full">
       <aside>
         <img src="/vite.svg" alt="" className="w-11 h-11" />
         <p>
@@ -47,6 +48,12 @@ export default function Footer() {
               <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
             </svg>
           </a>
+        </div>
+        <h6 className="footer-title ">Visit</h6>
+        <div className="grid grid-flow-col gap-4">
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/products">Products</NavLink>
+          <NavLink to="/contact-us">Contact Us</NavLink>
         </div>
       </nav>
     </footer>

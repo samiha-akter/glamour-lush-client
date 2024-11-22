@@ -10,7 +10,7 @@ const UserCard = ({ user, setLatestData }) => {
   const [updatedStatus, setUpdatedStatus] = useState(user.status);
   const userData = useUserData();
   const email = userData.email;
-  // Function to remove user
+  // Remove user
   const handleRemoveUser = async () => {
     try {
       const res = await axios.delete(
@@ -42,7 +42,7 @@ const UserCard = ({ user, setLatestData }) => {
     }
   };
 
-  // Function to edit user
+  // Edit user info
   const handleEditUser = async () => {
     try {
       const res = await axios.patch(
@@ -107,7 +107,6 @@ const UserCard = ({ user, setLatestData }) => {
                 </button>
               </>
             ) : (
-              // Placeholder for buttons when hidden
               <div className="h-10"></div>
             )}
           </div>

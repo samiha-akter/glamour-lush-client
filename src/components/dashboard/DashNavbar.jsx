@@ -13,6 +13,7 @@ import { BsCart4 } from "react-icons/bs";
 import UserDropdown from "../UserDropdown";
 import Dropdown from "./Dropdown";
 
+// Seller Routes
 const sellerRoutes = [
   {
     id: 1,
@@ -28,6 +29,7 @@ const sellerRoutes = [
   },
 ];
 
+// Buyer Routes
 const buyerRoutes = [
   {
     id: 1,
@@ -43,6 +45,7 @@ const buyerRoutes = [
   },
 ];
 
+// Admin Routes
 const adminRoutes = [
   {
     id: 1,
@@ -75,7 +78,6 @@ export default function DashNavbar() {
       {/* Sidebar */}
       <input id="my-drawer" type="checkbox" className="drawer-toggle hidden" />
       <div className="drawer-side fixed top-0 left-0 z-50 h-full">
-        {/* Overlay */}
         <label
           htmlFor="my-drawer"
           className="drawer-overlay fixed inset-0 bg-black opacity-50"
@@ -135,9 +137,9 @@ export default function DashNavbar() {
         </ul>
       </div>
 
-      {/* Right Section */}
+      {/* Right Profile Section */}
       <div className="flex-none">
-        <Dropdown/>
+        <Dropdown />
       </div>
     </div>
   );

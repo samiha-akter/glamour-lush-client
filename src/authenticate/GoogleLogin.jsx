@@ -13,7 +13,7 @@ export default function GoogleLogin() {
   return (
     <div>
       <div className="divider">OR</div>
-
+      {/* Google Login */}
       <div>
         <button
           onClick={handleGoogleLogin}

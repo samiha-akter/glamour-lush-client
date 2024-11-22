@@ -9,12 +9,27 @@ export default function OverviewCard() {
         <div className="stat-title">Email</div>
         <div className="stat-value">{userData.email}</div>
       </div>
-
-      <div className="stat">
-        <div className="stat-title">{userData.role}</div>
-        <div className="stat-value">{userData.status}</div>
-      </div>
-
+      {/* For Buyer and Seller */}
+      {userData.role !== "admin" && (
+        <div className="stat">
+          <div className="stat-title">{userData.role}</div>
+          {userData.status === "approved" && (
+            <div className="stat-value text-green-500">{userData.status}</div>
+          )}
+          {userData.status === "pending" && (
+            <div className="stat-value text-red-500">{userData.status}</div>
+          )}
+        </div>
+      )}
+      {/* For Admin */}
+      {userData.role === "admin" && (
+        <div className="stat">
+          <div className="stat-title">Role</div>
+          <div className="stat-value text-green-500 uppercase">
+            {userData.role}
+          </div>
+        </div>
+      )}
       {userData.role === "buyer" && (
         <div className="stat">
           <div className="stat-title">Wishlist</div>

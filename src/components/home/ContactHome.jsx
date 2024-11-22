@@ -15,6 +15,7 @@ export default function ContactHome() {
             </p>
           </div>
           <div className="grid grid-cols-1 gap-12 mt-10 md:grid-cols-3 px-10 ">
+            {/* Email */}
             <div>
               <span className="inline-block p-3 text-white rounded-full bg-purple-400 ">
                 <svg
@@ -37,7 +38,7 @@ export default function ContactHome() {
               <p className="mt-2 ">glamour-lush@adc.com</p>
               <p className="mt-2 ">Our team is always here to help.</p>
             </div>
-
+            {/* Address */}
             <div>
               <span className="inline-block p-3 text-white rounded-full bg-purple-400">
                 <svg
@@ -66,6 +67,7 @@ export default function ContactHome() {
               <p className="mt-2 ">Dhaka, Bangladesh</p>
               <p className="mt-2 ">Visit our outlet anytime.</p>
             </div>
+            {/* Phone */}
             <div>
               <span className="inline-block p-3 text-white rounded-full bg-purple-400">
                 <svg

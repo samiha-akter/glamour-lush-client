@@ -3,7 +3,7 @@ import React from "react";
 const Accordion = () => {
   return (
     <div className="flex flex-col gap-2 w-4/5 lg:w-2/3 mx-auto">
-      <div className="collapse collapse-arrow bg-base-100 border-2 border-purple-400 border-2 border-purple-400 ">
+      <div className="collapse collapse-arrow bg-base-100 border-2 border-purple-400 ">
         <input type="radio" name="my-accordion-2" defaultChecked />
         <div className="collapse-title text-xl font-semibold">
           What is your return policy?

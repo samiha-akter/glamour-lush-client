@@ -10,6 +10,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [updatedPrice, setUpdatedPrice] = useState("");
 
+  // Wishlist Handler - Buyer
   const handleWishlist = async() => {
     await axios
       .patch(
@@ -38,6 +39,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       });
   };
 
+  // Remove from wishlist - Buyer
   const handleRemoveWishlist = async () => {
     await axios
       .patch(
@@ -67,6 +69,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       });
   };
 
+  // Cart Handler - Buyer
   const handleCart = async () => {
     await axios
       .patch(
@@ -95,6 +98,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       });
   };
 
+  // Remove from cart - Buyer
   const handleRemoveCart = async () => {
     await axios
       .patch(
@@ -124,6 +128,8 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
       });
   };
 
+
+  // Remove product - Seller
   const handleRemoveProduct = async () => {
     try {
       const token = localStorage.getItem("access-token");
@@ -156,6 +162,7 @@ const ProductCard = ({ product, isInWishlist, isInCart, setLatestData }) => {
     }
   };
 
+  // Edit Product Details - Seller
   const handleEditProduct = async () => {
     try {
       const res = await axios.patch(

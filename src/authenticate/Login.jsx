@@ -13,7 +13,7 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     await Login(data.email, data.password);
     navigate("/");
   };
@@ -26,24 +26,26 @@ export default function Login() {
             Glamour <span className="text-purple-400">Lush</span>
           </span>
         </h1>
-          <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="email"
-                className="input input-bordered"
-                {...register("email", { required: true })}
-              />
-              {errors.email?.type === "required" && (
-                <p className="text-red-500 text-sm font-light">
-                  Email is required!
-                </p>
-              )}
-            </div>
-            <div className="form-control">
+        <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+          {/* Email Field */}
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              placeholder="email"
+              className="input input-bordered"
+              {...register("email", { required: true })}
+            />
+            {errors.email?.type === "required" && (
+              <p className="text-red-500 text-sm font-light">
+                Email is required!
+              </p>
+            )}
+          </div>
+          {/* Password Field */}
+          <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Password</span>
             </label>
@@ -79,22 +81,23 @@ export default function Login() {
               </p>
             )}
           </div>
-
-            <div className="form-control mt-6">
-              <button type="submit" className="btn bg-purple-400 text-white">
-                Login
-              </button>
-            </div>
-            <GoogleLogin />
-            <p className="my-4 text-sm font-light">
-              New to Our Site?
-              <Link to="/register" className="text-purple-500 underline">
-                Register
-              </Link>
-            </p>
-          </form>
-        </div>
+          {/* Buttons */}
+          <div className="form-control mt-6">
+            <button type="submit" className="btn bg-purple-400 text-white">
+              Login
+            </button>
+          </div>
+          {/* Social Login */}
+          <GoogleLogin />
+          {/* Navigation */}
+          <p className="my-4 text-sm font-light">
+            New to Our Site?
+            <Link to="/register" className="text-purple-500 underline">
+              Register
+            </Link>
+          </p>
+        </form>
       </div>
-    
+    </div>
   );
 }
