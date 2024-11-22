@@ -14,7 +14,7 @@ function About() {
           <p className="py-6 text-center text-5xl font-bold">
             Welcome To{" "}
             <span className=" text-medium text-deep font-bold">
-              Glamour Lush
+              Glamour <span className="text-purple-400">Lush</span>
             </span>
           </p>
           <p className=" mb-6">

@@ -9,6 +9,7 @@ import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
 } from "react-icons/fa";
+import Heading from "../components/Heading";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -64,8 +65,7 @@ const Products = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="my-8 text-2xl font-semibold text-center">All Products</h1>
-      {/* Search and Sort */}
+      <Heading text={"All Products"} /> {/* Search and Sort */}
       <div className="flex flex-col lg:flex-row gap-3 justify-between items-center w-full mb-6">
         <SearchBar handleSearch={handleSearch} />
         <SortByPrice setSort={setSort} />
