@@ -28,7 +28,7 @@ const FeaturedProducts = () => {
               <h1 className="text-3xl font-bold text-center">No Products Found.</h1>
             </div>
           ) : (
-            <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-5 p-5">
+            <div className="min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-5 pb-3">
               {products?.map((product) => (
                 <FeaturedProductCard key={product._id} product={product} />
               ))}
